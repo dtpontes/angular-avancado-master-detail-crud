@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from "../shared/category.model";
 import { CategoryService } from "../shared/category.service";
 
-import  toaster from "toastr";
+import  toastr from "toastr";
 import { switchMap } from 'rxjs/operators';
 
 
@@ -57,7 +57,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     this.categoryForm = this.formBuilder.group({
       id:[null],
       name: [null,[Validators.required,Validators.minLength(2)]],
-      desccription : [null]
+      description : [null]
     })
   }
   private setCurrentAction() {
@@ -84,5 +84,59 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
       this.pageTitle = "Edição de Categoria " + categoryName;
     }
   }
+
+  submitForm(){
+    this.submittingForm = true;
+    if(this.currentAction == "new")
+    {
+      this.createCategory();
+    }
+    else{
+      this.updateCategory();
+    }
+  }
+
+  private createCategory() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
+
+    this.categoryService.create(category)
+      .subscribe(
+        category=> this.actionsForSuccess(category),
+        error=> this.actionsForError(error)
+      )
+  }
+  private updateCategory() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
+
+    this.categoryService.update(category)
+      .subscribe(
+        category=> this.actionsForSuccess(category),
+        error=> this.actionsForError(error)
+      )
+  }
+
+  private actionsForError(error): void {
+    toastr.error("Ocorreu um erro ao processar sua solicitação");
+
+    this.submittingForm = false;
+    if(error.status === 422 ){
+      this.serverErrorMessages = JSON.parse(error.body).errors;
+    }
+    else{
+      this.serverErrorMessages = ["Falha na comunicação com o servidor"];
+    }
+
+  }
+  private actionsForSuccess(category:Category): void {
+    toastr.success("Solicitação procesada com sucesso");
+
+    //redirect/reload component page
+    this.router.navigateByUrl("categories",{skipLocationChange: true}).then(
+      ()=>this.router.navigate(["categories",category.id,"edit"])
+    )
+  }
+
+  
+  
 
 }
