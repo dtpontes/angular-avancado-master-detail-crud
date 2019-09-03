@@ -1,5 +1,6 @@
 import {InMemoryDbService  } from "angular-in-memory-web-api";
 import { Category } from "./pages/categories/shared/category.model";
+import { Entry } from "./pages/entries/shared/entry.model";
 export class InMemoryDataBase implements InMemoryDbService{
     createDb(){
         const categories : Category[] = [
@@ -10,6 +11,18 @@ export class InMemoryDataBase implements InMemoryDbService{
             {id:5, name:"Freelas",description:"Trabalhos freela"},
 
         ];
-        return {categories};
+
+        const entries: Entry[] = [
+            {id:1, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:2, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:3, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:4, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:5, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:6, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+
+        ]
+
+
+        return {categories, entries};
     }
 }
