@@ -13,12 +13,12 @@ export class InMemoryDataBase implements InMemoryDbService{
         ];
 
         const entries: Entry[] = [
-            {id:1, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
-            {id:2, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
-            {id:3, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
-            {id:4, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
-            {id:5, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
-            {id:6, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:1, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'70',type:'revenue',description:'Gastos com gás de cozinha' } as Entry,
+            {id:2, name:'Parque', categoryId:categories[0].id, category:categories[0], paid:false,date:'14/04/2018', amount:'200',type:'revenue',description:'Gastos com gás de cozinha' } as Entry,
+            {id:3, name:'Zoologico', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'1000',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:4, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:false,date:'14/04/2018', amount:'3000',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:5, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:true,date:'14/04/2018', amount:'5000',type:'expense',description:'Gastos com gás de cozinha' } as Entry,
+            {id:6, name:'Gás de cozinha', categoryId:categories[0].id, category:categories[0], paid:false,date:'14/04/2018', amount:'100',type:'revenue',description:'Gastos com gás de cozinha' } as Entry,
 
         ]
 
