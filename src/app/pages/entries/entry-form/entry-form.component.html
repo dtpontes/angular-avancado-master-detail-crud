@@ -49,18 +49,39 @@
                 <div *ngIf="entryForm.get('name').errors.minlength">Deve ter no mímimo dois caracteres</div>
               </div>
           </div>
-
+          <!--Date -->
           <div class="form-group col-md-3">
-              <label for="amount">Valor</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">R$</div>
-                </div>
-                <input [imask]="imaskconfig" type="text" class="form-control text-right" id="amount" formControlName="amount">
+            <label for="amount">Valor</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">R$</div>
               </div>
+              <input [imask]="imaskconfig" type="text" class="form-control text-right" id="amount" formControlName="amount">
+            </div>
+            
+  
+            <div class="text-danger" *ngIf="entryForm.get('amount').invalid && entryForm.get('amount').touched">
+              <div *ngIf="entryForm.get('amount').errors.required">Valor obrigatório</div>                
+            </div>
+        </div>
+          <!-- Amount-->
+          <div class="form-group col-md-2">
+              <label for="date">Data</label>
+              <p-calendar
+                id="date"
+                formControlName="date"
+                inputStyleClass="form-control"
+                dataType="string"
+                dateFormat="dd/mm/yy"
+                [showButtonBar]="true"
+
+                >
+                
+
+              </p-calendar>
               
     
-              <div class="text-danger" *ngIf="entryForm.get('amount').invalid && entryForm.get('amount').touched">
+              <div class="text-danger" *ngIf="entryForm.get('date').invalid && entryForm.get('date').touched">
                 <div *ngIf="entryForm.get('amount').errors.required">Valor obrigatório</div>                
               </div>
           </div>
